@@ -1,0 +1,91 @@
+.film {
+    max-width: 495px;
+    max-height: 281px;
+    display: flex;
+    margin-right: 19px;
+    margin-bottom: 34px;
+    box-shadow: -4px 17px 23px 8px #00000026;
+}
+.film__wrapper {
+    width: 454px;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* display: flex;
+    flex-direction: column; */
+    position: relative;
+}
+.film__image {
+    width: 183px;
+    height: 281px;
+}
+
+.film-title__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 12px;
+}
+.film-title {
+    font-family: 'Inter-Regular';
+    font-size: 20px;
+    line-height: 28px;
+    width: calc(100% - 17px);
+}
+.film-date {
+    font-size: 12px;
+    color: #827e7e;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.film-text {
+    margin-top: 7px;
+    min-height: 119px;
+}
+.film-genre {
+    margin-right: 10px;
+    border: 1px solid #d9d9d9;
+    margin-bottom: 10px;
+    padding: 0 4px;
+    background-color: #fafafa;
+}
+.film-wrapper__genre {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.ant-rate {
+    bottom: 26px;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+}
+.film__rating {
+    width: 40px;
+    height: 37px;
+    border: 2px solid #e9d100;
+    border-radius: 50%;
+    line-height: 35px; /* подробнее про line-height */
+    text-align: center; /* выравнять текст по середине по горизонтали */
+    margin-left: 13px;
+}
+.rating__green {
+    border-color: #66e900;
+}
+.rating__yellow {
+    border-color: #e9d100;
+}
+.rating__orange {
+    border-color: #e97e00;
+}
+.rating__red {
+    border-color: #e90000;
+}
+input[type='radio'] {
+    display: none;
+}
+.on {
+    color: #000;
+}
+.off {
+    color: #ccc;
+}

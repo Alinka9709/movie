@@ -1,0 +1,64 @@
+@import '~antd/dist/antd.css';
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+
+
+}
+
+button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.ant-pagination:not(:last-child) {
+	margin-bottom: 24px;
+	
+  }
+  .ant-pagination {
+	text-align: center;
+	margin-bottom: 25px;
+	margin-top: 40px;
+  }
+  input {
+	  padding-left: 12px;
+  }
+  .moviesapp {
+	display: flex;
+	flex-direction: column;
+
+	margin: 0;
+	font-weight: 400;
+  }
+  
+  .filmswrapper {
+	display: flex;
+	flex-direction: column;
+	/* width: calc(100vw * 0.65138888888); */
+	width: 1024px;
+	flex-wrap: wrap;
+	margin: 0;
+	row-gap: 22px;
+	margin-top: 15px;
+	margin-left: 213px;
+	margin-right: 251px;
+	justify-content: center;
+  }
+  .ant-tabs {
+	  align-items: center;
+  }
+  .film__input {
+   margin-bottom: 30px;
+  }

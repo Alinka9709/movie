@@ -1,0 +1,25 @@
+.movie-list {
+    list-style-position: inside;
+    margin:0 auto;
+  column-count: 2;
+  list-style-type: decimal;
+  margin: 0;
+  padding: 0;
+  
+}
+.example {
+    margin: 20px 0;
+    margin-bottom: 20px;
+    padding: 30px 50px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  }
+ .alert {
+    color: gray;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    size: 30px;
+ }
