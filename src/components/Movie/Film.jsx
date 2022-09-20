@@ -6,9 +6,11 @@ import PropTypes from 'prop-types'
 import { Rate } from 'antd'
 import { GenresConsumer } from '../Context/Context'
 import image from './znak.jpeg'
+import { filmRating } from '../logic/RatingLogic'
+import { rateMovie } from '../logic/ApiLogic'
 import './Film.css'
 
-function Film({ img, title, date, text, voice, id, ids, rating, rateMovie }) {
+function Film({ img, title, date, text, voice, id, ids, rating, }) {
     const reduction = (str) => {
         const array = str.split(' ')
         array.splice(15)
@@ -19,12 +21,9 @@ function Film({ img, title, date, text, voice, id, ids, rating, rateMovie }) {
         <img className="film__image" src={img ? `https://image.tmdb.org/t/p/original${img}` : image} alt="img" />
       )
 
-    let filmRating
+    
 
-    if (voice <= 3) filmRating = 'film__rating rating__red'
-    if (voice <= 5) filmRating = 'film__rating rating__orange'
-    if (voice <= 7) filmRating = 'film__rating rating__yellow'
-    if (voice > 7) filmRating = 'film__rating rating__green'
+ 
 
     return (
         <GenresConsumer>
@@ -34,7 +33,7 @@ function Film({ img, title, date, text, voice, id, ids, rating, rateMovie }) {
                     <div className="film__wrapper">
                         <div className="film-title__wrapper">
                             <span className="film-title">{title}</span>
-                            <div className={filmRating}>
+                            <div className={filmRating(voice)}>
                                 {Math.round(voice)}
                             </div>
                         </div>
@@ -77,6 +76,6 @@ Film.propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
     id: PropTypes.array.isRequired,
     rating: PropTypes.number.isRequired,
-    rateMovie: PropTypes.func.isRequired,
+
     ids: PropTypes.number.isRequired,
 }

@@ -1,31 +1,15 @@
-import { Spin, Alert } from 'antd'
+import { Spin } from 'antd'
 
 import React from 'react'
 import PropTypes from 'prop-types'
 import './MovieList.css'
 
 import Film from '../Movie/Film'
+import ErrLogic from '../logic/ErrLogic'
 
-function MovieList({ err, isLoaded, results, rateMovie }) {
-    if (!navigator.onLine) {
-        return (
-            <Alert
-                message="Нет подключения к Интернету!
-                Проверьте сетевые кабели, модем и маршрутизатор.
-                Подключитесь к сети Wi-Fi ещё раз."
-                type="warning"
-                className="alert"
-            />
-        )
-    }
-    if (err) {
-        ;<Alert
-            className="alert"
-            type="error"
-            message="Что-то пошло не так,но мы уже работаем над этим"
-            banner
-        />
-    } else if (isLoaded) {
+function MovieList({ err, isLoaded, results}) {
+   <ErrLogic err={err}/>
+    if (isLoaded) {
         return (
             <div className="example">
                 <Spin />
@@ -42,7 +26,7 @@ function MovieList({ err, isLoaded, results, rateMovie }) {
                 voice={item.vote_average}
                 date={item.release_date}
                 text={item.overview}
-                rateMovie={rateMovie}
+            
                 rating={item.rating ? item.rating : 0}
             />
         ))
@@ -57,5 +41,5 @@ MovieList.propTypes = {
     isLoaded: PropTypes.bool.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     results: PropTypes.array.isRequired,
-    rateMovie: PropTypes.func.isRequired,
+ 
 }
