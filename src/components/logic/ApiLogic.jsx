@@ -21,6 +21,7 @@ export const getMovies = async (url, query, page, func1, func2, func3, func4) =>
         param0(res.genres)
       }catch (e){
        console.log(e);
+       
       }
        
 }
