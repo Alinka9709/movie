@@ -9,6 +9,7 @@ export const getMovies = async (url, query, page, func1, func2, func3, func4) =>
     } catch (e) {
       func1(false)
       func4(e)
+      
     }
    
   };
