@@ -4,7 +4,7 @@ import { Pagination, Input, Tabs } from 'antd'
 import { debounce } from 'lodash'
 import MovieList from '../MovieList/MovieList'
 import { GenresProvider } from '../Context/Context'
-import {  getMovies, genre, seachId, ratingFilms } from '../logic/ApiLogic'
+import { getMovies, genre, seachId, ratingFilms } from '../logic/ApiLogic'
 import './App.css'
 
 const BASE_URL =
@@ -27,6 +27,7 @@ function App() {
     //     .then((res) => {
     //         if (res.ok) {
     //           res.json().then((result) => {
+    //               console.log(result);
     //             setIsLoaded(false)
     //             setItems(result.results)
     //             setPageQty(result.total_pages)
@@ -41,14 +42,14 @@ function App() {
   useEffect(() => {
     seachId()
     genre(setGenres)
-    // getMovies()
+  
     getMovies( BASE_URL,'return', page, setIsLoaded, setItems, setPageQty, setError )
 
 }, [page])
 
     const onChange = (e) => {
         if (e !== "") {
-            getMovies(e)
+            getMovies(BASE_URL,e, page, setIsLoaded, setItems, setPageQty, setError)
            
         }
     
