@@ -59,7 +59,7 @@ function App() {
 
               <Pagination onChange={pagination} size="small" total={50} />
             </Tabs.TabPane>
-            <Tabs.TabPane tab="Rated" key="2">
+            <Tabs.TabPane tab="Rated"  key="2">
               <MovieList results={rate} />
             </Tabs.TabPane>
           </Tabs>
