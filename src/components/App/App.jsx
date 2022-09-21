@@ -7,37 +7,28 @@ import { GenresProvider } from "../Context/Context";
 import { getMovies, genre, seachId, ratingFilms } from "../logic/ApiLogic";
 import "./App.css";
 
-const BASE_URL =
-  "https://api.themoviedb.org/3/search/movie?api_key=ddb44769a9fa28d200546e7d28aa707c";
-
 function App() {
   const [err, setError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(true);
   const [results, setItems] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pageQty, setPageQty] = useState(0);
+
   const [genres, setGenres] = useState([]);
   const [rate, setRate] = useState([]);
   const [input, setInput] = useState("");
 
-    useEffect(() => {
+  useEffect(() => {
     seachId();
     genre(setGenres);
 
-    getMovies(
-      BASE_URL,
-      "return",
-      page,
-      setIsLoaded,
-      setItems,
-      setPageQty,
-      setError
+    getMovies("return",3,setIsLoaded,setItems,setError
     );
-  }, [page]);
-
-  const onChange = (e) => {
+  }, []);
+  function pagination(page) {
+    getMovies("return", page, setIsLoaded, setItems, setError);
+  }
+  const onChange = (e, page) => {
     if (e !== "") {
-      getMovies(BASE_URL, e, page, setIsLoaded, setItems, setPageQty, setError);
+      getMovies(e, page, setIsLoaded, setItems, setError);
     }
   };
 
@@ -66,14 +57,7 @@ function App() {
               />
               <MovieList err={err} isLoaded={isLoaded} results={results} />
 
-              {!!pageQty && (
-                <Pagination
-                  count={pageQty}
-                  onChange={(num) => setPage(num)}
-                  size="small"
-                  total={50}
-                />
-              )}
+              <Pagination onChange={pagination} size="small" total={50} />
             </Tabs.TabPane>
             <Tabs.TabPane tab="Rated" key="2">
               <MovieList results={rate} />

@@ -4,15 +4,15 @@ export const getMovies = async (
   page,
   func1,
   func2,
-  func3,
+ 
   func4
 ) => {
   try {
-    const data = await fetch(`${url}&query=${query}&page=${page}`);
+    const data = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=ddb44769a9fa28d200546e7d28aa707c&query=${query}&page=${page}`);
     const result = await data.json();
     func1(false);
     func2(result.results);
-    func3(result.total_pages);
+ 
   } catch (e) {
     func1(false);
     func4(e);
