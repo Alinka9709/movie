@@ -1,22 +1,16 @@
-export const getMovies = async (
-  url,
-  query,
-  page,
-  func1,
-  func2,
- 
-  func4
-) => {
-  try {
-    const data = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=ddb44769a9fa28d200546e7d28aa707c&query=${query}&page=${page}`);
-    const result = await data.json();
+const axios = require('axios').default;
+
+export const getMovies = (query,page,func1,func2,func4)=>{
+axios.get(`https://api.themoviedb.org/3/search/movie?api_key=ddb44769a9fa28d200546e7d28aa707c&query=${query}&page=${page}`)
+  .then(function (result) {
     func1(false);
     func2(result.results);
- 
-  } catch (e) {
+  })
+  .catch(function (e) {
     func1(false);
     func4(e);
-  }
+  })
+ 
 };
 
 export const genre = async (param0) => {
@@ -44,22 +38,19 @@ export const seachId = async () => {
     console.log(e);
   }
 };
+const instance = (movieId, value,params) => axios.create({
+  params : localStorage.getItem("token"),
+  baseURL: `https://api.themoviedb.org/3/movie/${movieId}/rating?api_key=ddb44769a9fa28d200546e7d28aa707c&guest_session_id=${params}`,
 
-export const rateMovie = async (movieId, value) => {
-  const params = localStorage.getItem("token");
-  await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}/rating?api_key=ddb44769a9fa28d200546e7d28aa707c&guest_session_id=${params}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        value,
-      }),
-    }
-  );
-};
+  headers: {"Content-Type": "application/json"},
+  body : JSON.stringify({
+    value,
+  }),
+});
+export async function rateMovie() {
+  instance()
+}
+
 export const ratingFilms = async (param) => {
   try {
     const params = localStorage.getItem("token");
