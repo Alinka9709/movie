@@ -1,17 +1,12 @@
- export function filmRating(voice) {
-    // switch (voice) {
-    //     case voice  3:
-    //       return " circle__red"
-    //     case voice <= 5:
-    //       return " movie-item__circle circle__orange"
-    //     case vote <= 7:
-    //       return " movie-item__circle circle__yellow"
-    //     case vote > 7:
-    //       return " movie-item__circle circle__green"
-    //   }
-    
-    if (voice <= 3) return'film__rating rating__red'
-    if (voice <= 5) return'film__rating rating__orange'
-    if (voice <= 7) return 'film__rating rating__yellow'
-    if (voice > 7) return 'film__rating rating__green'
+export function filmRating(voice) {
+     let baseFilmRatingParam = "film__rating rating__"
+     let map = new Map();
+     map.set(3,baseFilmRatingParam + 'red')
+    map.set(5,baseFilmRatingParam + 'orange')
+    map.set(7,baseFilmRatingParam + 'yellow')
+    map.set(8,baseFilmRatingParam +  'green')
+    if (voice <= 3) return map.get(3)
+    else if (voice <= 5) return map.get(5)
+    else if (voice <= 7) return map.get(7)
+    else if (voice > 7) return map.get(8)
 }
